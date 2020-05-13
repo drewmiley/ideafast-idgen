@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ID-Generator Example</title>
+  </head>
+  <body>
+    <div id="generated"></div>
+    <button onClick="generateID()">Generate ID</button>
+    <script src="https://unpkg.com/@ideafast/idgen@latest/dist/lib.umd.js"></script>
+    <script>
+      function generateID() {
+        // Generate an ID
+        const id = IDEAFastID.generate();
+        // Validate an ID
+        if (IDEAFastID.validate(id)) {
+          document.getElementById('generated').innerText = id;
+        }
+      }
+    </script>
+  </body>
+</html>
