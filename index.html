@@ -5,16 +5,26 @@
     <title>ID-Generator Example</title>
   </head>
   <body>
+    <h1>Generator Options</h1>
+    <div>Prefix Code: <input id="prefix" type="text" /></div>
+    <div>Number to generate: <input id="total" type="number" value="75" /></div>
+    <button onClick="generateIDs()">Generate IDs</button>
+    <h1>Generated IDs</h1>
     <div id="generated"></div>
-    <button onClick="generateID()">Generate ID</button>
     <script src="https://unpkg.com/@ideafast/idgen@latest/dist/lib.umd.js"></script>
     <script>
-      function generateID() {
-        // Generate an ID
-        const id = IDEAFastID.generate();
-        // Validate an ID
-        if (IDEAFastID.validate(id)) {
-          document.getElementById('generated').innerText = id;
+      function generateIDs() {
+        const prefix = document.getElementById('prefix').value;
+        const total = parseInt(document.getElementById('total').value);
+        document.getElementById('generated').innerHTML = "";
+        for (let i = 0; i < total; i++) {
+            // Generate an ID
+            const id = IDEAFastID.generate();
+            // Validate an ID
+            if (IDEAFastID.validate(id)) {
+                document.getElementById('generated').innerText += `${prefix}${id}`;
+                document.getElementById('generated').innerHTML += '<br />';
+            }
         }
       }
     </script>
