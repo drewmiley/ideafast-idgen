@@ -8,6 +8,7 @@
     <h1>Generator Options</h1>
     <div>Prefix Code: <input id="prefix" type="text" /></div>
     <div>Number to generate: <input id="total" type="number" value="75" /></div>
+    <div>Length to generate: <input id="length" type="number" value="6" /></div>
     <button onClick="generateIDs()">Generate IDs</button>
     <h1>Generated IDs</h1>
     <div id="generated"></div>
@@ -16,10 +17,11 @@
       function generateIDs() {
         const prefix = document.getElementById('prefix').value;
         const total = parseInt(document.getElementById('total').value);
+        const length = parseInt(document.getElementById('length').value);
         document.getElementById('generated').innerHTML = "";
         for (let i = 0; i < total; i++) {
             // Generate an ID
-            const id = IDEAFastID.generate();
+            const id = IDEAFastID.generate(length);
             // Validate an ID
             if (IDEAFastID.validate(id)) {
                 document.getElementById('generated').innerText += `${prefix}${id}`;
